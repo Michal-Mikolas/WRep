@@ -1,0 +1,31 @@
+#:kivy 2.0.0
+
+<MainView>:
+	orientation: 'vertical'
+	padding: 10, 10, 10, 10
+	spacing: 10
+	# output_sheet: output_sheet
+
+	TextInput:
+		id: input_sheet
+		hint_text: "Input 1"
+
+	Button:
+		id: process
+		text: "Process"
+		size_hint: 1, None
+		height: 60
+		on_press: root.pressed()
+
+	TextInput:
+		id: output_headline
+		hint_text: "Output headline"
+		size_hint: 1, None
+		height: 30
+		multiline: False
+
+	TextInput:
+		id: output_sheet
+		hint_text: "Output sheet"
+		text: str(root.output_sheet)
+
