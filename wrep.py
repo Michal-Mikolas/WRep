@@ -9,10 +9,7 @@ class MainView(BoxLayout):
 	output_sheet = StringProperty("")
 
 	def pressed(self):
-		print('pressing...')
 		self.output_sheet = "Ahoj"
-		# self.output_sheet.text = "Ahoj"
-		print('pressed.')
 
 
 class WrepApp(App):
