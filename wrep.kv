@@ -1,17 +1,24 @@
 #:kivy 2.0.0
+#:import Clock kivy.clock.Clock
+#:import Clipboard kivy.core.clipboard.Clipboard
 
 <MainView>:
 	orientation: 'vertical'
 	padding: 10, 10, 10, 10
 	spacing: 10
 
+	input_sheet: input_sheet
+	output_sheet: output_sheet
+	output_headline: output_headline
+
 	TextInput:
 		id: input_sheet
 		hint_text: "Input 1"
+		on_focus: Clock.schedule_once(lambda dt: self.select_all()) if self.focus else None
 
 	Button:
 		id: process
-		text: "Process"
+		text: "MAKE MAGIC"
 		size_hint: 1, None
 		height: 60
 		on_press: root.pressed()
@@ -22,9 +29,10 @@
 		size_hint: 1, None
 		height: 30
 		multiline: False
+		on_focus: Clock.schedule_once(lambda dt: (self.select_all(), Clipboard.copy(self.text))) if self.focus else None
 
 	TextInput:
 		id: output_sheet
 		hint_text: "Output sheet"
-		text: str(root.output_sheet)
+		on_focus: Clock.schedule_once(lambda dt: (self.select_all(), Clipboard.copy(self.text))) if self.focus else None
 
