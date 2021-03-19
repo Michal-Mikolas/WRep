@@ -54,7 +54,9 @@ class MainView(BoxLayout):
 				stats[id]['name'] = id.strip()
 
 			# Stats: Hours
-			stats[id]['hours'] += float(columns[3])
+			hours = str(columns[3]).replace(',', '.')
+			hours = float(hours)
+			stats[id]['hours'] += hours
 
 			# Stats: Tasks
 			tasks = re.split(';\s*', columns[7].strip('; '))
